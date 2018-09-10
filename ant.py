@@ -1,9 +1,9 @@
 import binascii
 import re
-import usb.core
 import glob
 import time
 import platform
+import usb.core
 
 if platform.system() == 'Linux':
     import serial
@@ -195,7 +195,6 @@ def get_ant(debug):
             dev_ant = serial.Serial(p, 19200, rtscts=True, dsrdtr=True)
             read_val = send_ant(["a4 01 4a 00 ef 00 00"], dev_ant, False)  # probe with reset command
             if "a4016f20ea" in read_val or "a4016f00ca" in read_val:  # found ANT+ stick
-                serial_port = p
                 ant_stick_found = True
                 msg = "Found ANT Stick"
             else:

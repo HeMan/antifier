@@ -185,11 +185,11 @@ def initialise_trainer(dev):
 def parse_factors(filename):
     temp = open(filename, "r").read().split("\n")
     rtn = {}
-    for l in temp:
-        l = l.split("#")  # get rid of comments
-        l = l[0].split(":")
-        if len(l) == 2:
-            vals = l[1].split(",")
+    for line in temp:
+        line = line.split("#")  # get rid of comments
+        line = line[0].split(":")
+        if len(line) == 2:
+            vals = line[1].split(",")
             if len(vals) == 2:
-                rtn[float(l[0])] = [float(vals[0]), float(vals[1])]
+                rtn[float(line[0])] = [float(vals[0]), float(vals[1])]
     return rtn

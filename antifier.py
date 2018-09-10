@@ -3,17 +3,17 @@ import ant
 import trainer
 import os
 import threading
-import Tkinter
 import pickle
-from Tkinter import Button, Entry, Frame, Label, Menu, StringVar, Toplevel
-from tkMessageBox import BOTH
-
 from datetime import datetime
+
 import argparse
 
-
-if os.name == "posix":
-    import serial
+try:
+    from Tkinter import Button, Entry, Frame, Label, Menu, StringVar, Tk, Toplevel
+    from Tkinter import BOTH
+except ImportError:
+    from tkinter import Button, Entry, Frame, Label, Menu, StringVar, Tk, Toplevel
+    from tkinter import BOTH
 
 parser = argparse.ArgumentParser(
     description="Program to broadcast data from USB Tacx trainer, and to receive resistance data for the trainer"
@@ -640,7 +640,6 @@ class Window(Frame):
                 self.RunoffButton.config(state="disabled")
             else:
                 print("Ctrl-C to exit")
-            resistance = 0  # set initial resistance level
             speed, cadence, power, heart_rate = (0,) * 4  # initialise values
             grade = False
             target_power = False

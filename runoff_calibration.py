@@ -1,6 +1,7 @@
-import usb.core
 import time
 import sys
+from six.moves import input
+import usb.core
 
 # find trainer model for Windows and Linux
 product = 0
@@ -94,6 +95,6 @@ try:
         print("Less pressure from trainer on tyre required")
     else:
         print("Calibration OK - good to train and get reasonable power numbers!")
-    raw_input("Press Enter to continue...")
+    input("Press Enter to continue...")
 except KeyboardInterrupt:
     pass
