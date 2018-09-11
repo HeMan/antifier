@@ -10,13 +10,13 @@ if platform.system() == 'Linux':
 
 
 def calc_checksum(message):  # calulate message checksum
-    pattern = re.compile('[\W_]+')
+    pattern = re.compile(r'[\W_]+')
     message = pattern.sub('', message)
     byte = 0
     xor_value = int(message[byte*2:byte*2+2], 16)
     data_length = int(message[byte*2+2:byte*2+4], 16)
     data_length += 3  # account for sync byte, length byte and message type byte
-    while (byte < data_length):  # iterate through message progressively xor'ing
+    while byte < data_length:  # iterate through message progressively xor'ing
         if byte > 0:
             xor_value = xor_value ^ int(message[byte*2:byte*2+2], 16)
         byte += 1
@@ -194,7 +194,7 @@ def get_ant(debug):
         for p in glob.glob('/dev/ttyUSB*'):
             dev_ant = serial.Serial(p, 19200, rtscts=True, dsrdtr=True)
             read_val = send_ant(["a4 01 4a 00 ef 00 00"], dev_ant, False)  # probe with reset command
-            if "a4016f20ea" in read_val or "a4016f00ca" in read_val:  # found ANT+ stick
+            if read_val in ["a4016f20ea", "a4016f00ca"]:  # found ANT+ stick
                 ant_stick_found = True
                 msg = "Found ANT Stick"
             else:
