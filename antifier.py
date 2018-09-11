@@ -1,12 +1,12 @@
+from datetime import datetime
+import argparse
+import os
+import pickle
+import threading
 import time
+
 import ant
 import trainer
-import os
-import threading
-import pickle
-from datetime import datetime
-
-import argparse
 
 try:
     from Tkinter import Button, Entry, Frame, Label, Menu, StringVar, Tk, Toplevel
