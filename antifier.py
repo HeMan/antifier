@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/python
 """"
 Program to broadcast data from USB Tacx trainer, and
 to receive resistance data for the trainer"
@@ -713,16 +713,12 @@ class Window(Frame):
                             :-3
                         ], "GRADE", grade, "%")
                     # set resistance level
-                    if (
-                        not grade and not target_power
-                    ):  # if trainer not been been set a grade or target power
+                    if not grade and not target_power:  # if trainer not been been set a grade or target power
                         grade = 0
                     resistance_level = len(pc_dict) - 1  # set to highest by default
                     if grade is not False:  # find resistance for grade
                         for idx, g in enumerate(sorted(pc_dict)):
-                            if (
-                                g >= grade
-                            ):  # find resistance value immediately above grade set by zwift
+                            if g >= grade:  # find resistance value immediately above grade set by zwift
                                 resistance_level = idx
                                 break
                     elif target_power:  # get resistance closest for power target
