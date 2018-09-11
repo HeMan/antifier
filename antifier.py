@@ -1,3 +1,8 @@
+#!/bin/bash
+""""
+Program to broadcast data from USB Tacx trainer, and
+to receive resistance data for the trainer"
+"""
 from datetime import datetime
 import argparse
 import os
@@ -9,17 +14,19 @@ import ant
 import trainer
 
 try:
-    from Tkinter import Button, Entry, Frame, Label, Menu, StringVar, Tk, Toplevel
-    from Tkinter import BOTH
+    from Tkinter import Button, Entry, Frame, Label, Menu, StringVar, Tk
+    from Tkinter import BOTH, Toplevel
 except ImportError:
-    from tkinter import Button, Entry, Frame, Label, Menu, StringVar, Tk, Toplevel
-    from tkinter import BOTH
+    from tkinter import Button, Entry, Frame, Label, Menu, StringVar, Tk
+    from tkinter import BOTH, Toplevel
 
 parser = argparse.ArgumentParser(
-    description="Program to broadcast data from USB Tacx trainer, and to receive resistance data for the trainer"
+    description="Program to broadcast data from USB Tacx trainer, and "
+                "to receive resistance data for the trainer"
 )
 parser.add_argument(
-    "-d", "--debug", help="Show debugging data", required=False, action="store_true"
+    "-d", "--debug",
+    help="Show debugging data", required=False, action="store_true"
 )
 parser.add_argument(
     "-s",
@@ -31,7 +38,8 @@ parser.add_argument(
 parser.add_argument(
     "-p",
     "--power-factor",
-    help="Adjust broadcasted power data by multiplying measured power by this factor",
+    help="Adjust broadcasted power data by multiplying measured power " 
+         "by this factor",
     required=False,
     default="1",
 )
@@ -62,7 +70,8 @@ try:
 except IOError:
     f = open(filename, "w+")
     f.write(
-        "This file contains information regarding Head Unit buttons and Zwift keyboard shortcuts mapping \r\n"
+        "This file contains information regarding Head Unit buttons and "
+        "Zwift keyboard shortcuts mapping \r\n"
     )
     f.write("PGUP \r\n")
     f.write("PGDOWN \r\n")
