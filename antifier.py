@@ -38,7 +38,7 @@ parser.add_argument(
 parser.add_argument(
     "-p",
     "--power-factor",
-    help="Adjust broadcasted power data by multiplying measured power " 
+    help="Adjust broadcasted power data by multiplying measured power "
          "by this factor",
     required=False,
     default="1",
